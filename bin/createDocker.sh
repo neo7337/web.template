@@ -2,7 +2,8 @@
 
 set -e
 
-if [ $# -lt 1 ]; then
+if [ $# -lt 2 ]; then
+  echo "please send image name and version"
   exit 1
 fi
 
@@ -26,6 +27,6 @@ yarn run build
 rm -rf node_modules
 
 cd "$PROJECT_DIR"
-docker build -t neo73/enviro.care:"$1" .
+docker build -t "$1":"$2" .
 
 rm -rf node_modules
